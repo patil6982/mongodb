@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MongoDB Guide UI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+  padding:30px;
+}
+
+/* HEADER */
+.header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.header h1{
+  font-size:32px;
+}
+
+.header span{
+  color:#00f2fe;
+}
+
+.header p{
+  color:#ccc;
+  margin-top:10px;
+}
+
+/* CARD */
+.card{
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.08);
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* TITLE */
+.card h2{
+  margin-bottom:10px;
+  font-size:20px;
+  color:#00f2fe;
+}
+
+/* CODE */
+pre{
+  background:rgba(0,0,0,0.6);
+  padding:15px;
+  border-radius:10px;
+  overflow-x:auto;
+  font-size:13px;
+  margin-top:10px;
+}
+
+/* BUTTON */
+button{
+  margin-top:10px;
+  padding:6px 12px;
+  border:none;
+  border-radius:8px;
+  background:#00c6ff;
+  color:white;
+  cursor:pointer;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+/* FLOW */
+.flow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-bottom:30px;
+}
+
+.flow div{
+  padding:10px 15px;
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+@media(max-width:600px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>MongoDB <span>Web Setup</span></h1>
+  <p>Simple Node.js + Express + MongoDB Guide</p>
+</div>
+
+<div class="flow">
+  <div>🌐 Client</div>
+  <div>→</div>
+  <div>⚙️ Express</div>
+  <div>→</div>
+  <div>🍃 Mongoose</div>
+  <div>→</div>
+  <div>🗄️ MongoDB</div>
+</div>
+
+<div class="card">
+  <h2>Step 1: Setup</h2>
+  <pre id="code1">npm init -y
+npm install express mongoose dotenv</pre>
+  <button onclick="copy('code1')">Copy</button>
+</div>
+
+<div class="card">
+  <h2>Step 2: .env</h2>
+  <pre id="code2">MONGO_URI=your_connection_string
+PORT=5000</pre>
+  <button onclick="copy('code2')">Copy</button>
+</div>
+
+<div class="card">
+  <h2>Step 3: Connect DB</h2>
+  <pre id="code3">mongoose.connect(process.env.MONGO_URI)</pre>
+  <button onclick="copy('code3')">Copy</button>
+</div>
+
+<div class="card">
+  <h2>Step 4: Model</h2>
+  <pre id="code4">const User = mongoose.model("User", {name:String,email:String});</pre>
+  <button onclick="copy('code4')">Copy</button>
+</div>
+
+<div class="card">
+  <h2>Step 5: API</h2>
+  <pre id="code5">app.get('/users',(req,res)=>{})</pre>
+  <button onclick="copy('code5')">Copy</button>
+</div>
+
+<div class="card">
+  <h2>CRUD Methods</h2>
+  <div class="grid">
+    <div class="card">find()</div>
+    <div class="card">findById()</div>
+    <div class="card">create()</div>
+    <div class="card">update()</div>
+  </div>
+</div>
+
+<script>
+function copy(id){
+  let text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied!");
+}
+</script>
+
+</body>
+</html>
+
